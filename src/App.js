@@ -3,22 +3,27 @@ import "./App.css";
 import Child1 from "./Child1";
 import Child2 from "./Child2";
 import * as d3 from "d3";
-import tips from "./tips.csv";
+import SampleDataset from "./SampleDataset.csv";
 
 
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.state={data:[]}
+    this.state = {
+      data: [],
+      columns: [], // Initialize columns array
+      selectedTarget: "A",
+      selectedVariables: null, // Initialize selectedVariables
+    };
   }
   componentDidMount(){
     var self=this
-    d3.csv(tips,function(d){
+    d3.csv(SampleDataset,function(d){
       return {
-        tip:parseFloat(d.tip),
-        total_bill:parseFloat(d.total_bill),
-        day:d.day
+        x:parseFloat(d.x),
+        y:parseFloat(d.y),
+        category:d.category
       }
     }).then(function(csv_data){
       self.setState({data:csv_data})
@@ -29,11 +34,25 @@ class App extends Component {
     })
 
   }
+
+  handleTargetChange = (event) => {
+    const selectedTarget = event.target.value;
+    this.setState({ selectedTarget });
+  };
+
+  handleCellClick = (selectedVariables) => {
+    this.setState({ selectedVariables });
+  };
+  
   render(){
     return <div className="parent">
-      <div className="child1"  width="700" height="350"><Child1></Child1></div>
+      <div className="child1"><Child1 data={this.state.data}></Child1></div>
 
-      <div className="child2"><Child2 data2={this.state.data}></Child2></div>
+      <div className="child2"><Child2 
+      data={this.state.data}
+      selectedTarget={this.state.selectedTarget}
+      onCellClick={this.handleCellClick}
+      ></Child2></div>
       
       </div>;
   }

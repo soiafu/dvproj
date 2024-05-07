@@ -5,24 +5,16 @@
 }
 
 .child1{
-  border: 1px solid gray;
   padding: 5px;
   height: 300px;
 }
 
 .child2{
-  border: 1px solid gray;
   padding: 5px;
   height: 300px;
 }
 
-.link{
-  stroke: red;
-  stroke-width: 2px;
-}
-.node{
-  fill:green
-}
+
 .tooltip_div{
   background-color: rgb(216, 216, 216);
   width: 200px;
