@@ -24,6 +24,8 @@ class Child1 extends Component {
     );
     console.log(temp_data); // Check the format of the data in the conosole
 
+    var svg = d3.select(".child1_svg");
+
     var container = d3
       .select(".child1_svg")
       .attr("width", w + margin.left + margin.right)
@@ -46,6 +48,13 @@ class Child1 extends Component {
       .attr("class", "x_axis_g")
       .attr("transform", `translate(0, ${h})`)
       .call(d3.axisBottom(x_scale));
+
+    svg.append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", w-170)
+      .attr("y", h + 40)
+      .text("categories");
     // Add Y axis
     var y_data = temp_data.map((item) => item[1]);
     var y_scale = d3
@@ -80,7 +89,7 @@ class Child1 extends Component {
   }
   render() {
     return (
-      <svg className="child1_svg">
+      <svg className="child1_svg" width="500" height="350">
         <g className="g_1"></g>
       </svg>
     );

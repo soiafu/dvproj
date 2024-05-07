@@ -19,14 +19,19 @@ class Child2 extends Component{
     // x v y
 
     console.log("ComponentDidUpdate",this.props.data);
-    var data =this.props.data;
-    var selectedTarget = this.props.selectedTarget;
-    var selectedCategory = this.state.selectedCategory;
-
+     
     var margin = { top: 10, right: 10, bottom: 30, left: 20 },
       w = 500 - margin.left - margin.right,
       h = 300 - margin.top - margin.bottom;
+
+    //d3.select(".child2_svg").selectAll("*").remove();
     
+    
+    var data =this.props.data;
+    var selectedTarget = this.props.selectedTarget;
+    var selectedCategory = this.state.selectedCategory;
+    var svg = d3.select(".child2_svg");
+  
     var container = d3.select(".child2_svg")
     .attr("width", w + margin.left + margin.right)
     .attr("height", h + margin.top + margin.bottom)
@@ -50,7 +55,12 @@ class Child2 extends Component{
       .attr("class", "x_axis_g")
       .attr("transform", `translate(0, ${h})`)
       .call(d3.axisBottom(x_scale));
-
+    svg.append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", w-200)
+      .attr("y", h + 40)
+      .text("X");
     // Add Y axis
     var y_data = data.map(item=>item.y);
     const y_scale = d3
@@ -64,6 +74,12 @@ class Child2 extends Component{
     .attr("class", "x_axis_g")
     .attr("transform", `translate(${margin.left},0)`)
     .call(d3.axisLeft(y_scale));
+    svg.append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", w-460)
+      .attr("y", h-125)
+      .text("Y");
 
     container
       .selectAll("circle")
@@ -79,7 +95,6 @@ class Child2 extends Component{
       .style("fill", "#69b3a2");
   }
   render() {
-    //const categories = ['A', 'B', 'C'];
 
     return (
 
