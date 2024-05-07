@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/dvproj/static/css/main.31170fee.css",
+    "main.js": "/dvproj/static/js/main.eb1830f0.js",
+    "static/media/tips.csv": "/dvproj/static/media/tips.43007c7e472255eef549.csv",
+    "index.html": "/dvproj/index.html",
+    "main.31170fee.css.map": "/dvproj/static/css/main.31170fee.css.map",
+    "main.eb1830f0.js.map": "/dvproj/static/js/main.eb1830f0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31170fee.css",
+    "static/js/main.eb1830f0.js"
+  ]
+}
